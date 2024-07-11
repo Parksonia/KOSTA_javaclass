@@ -35,3 +35,12 @@ public class ForTest4 {
 //d e f 10 11 12
 //g h i j 13 14
 //k l m n o 15
+
+//for(int i=0; i<cnt; i++) {
+//	for(int j=0; j<i+1; j++) {
+//		System.out.println(String.format("%3c", a++); // a먼저 찍고 ++
+//	}
+//	for(int j=0; j<cnt-i; j++) {
+//		System.out.println(String.format("%3d", n++);
+//	}
+//}
