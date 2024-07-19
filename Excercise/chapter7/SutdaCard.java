@@ -2,7 +2,7 @@ package chapter7;
 
 public class SutdaCard {
 	int num;
-	boolean isKwang;
+    boolean isKwang;
 
 	SutdaCard() {
 		this(1, true);

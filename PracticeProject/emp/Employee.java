@@ -5,7 +5,8 @@ public class Employee {
 
 	int num;
 	String name;
-
+	int wage; 
+	
 	Department department;
 	int dNum;
 	String dName;
@@ -26,6 +27,13 @@ public class Employee {
 		this.name = name;
 	}
 
+	public int getWage() {
+		return wage;
+	}
+
+	public void setWage(int wage) {
+		this.wage = wage;
+	}
 
 	public Department getDepartment() {
 		return department;
@@ -56,33 +64,31 @@ public class Employee {
 	}
 	
 	//사번,이름,(부서 클래스:부서번호,부서), 급여
-	public Employee(int num,String name,Department department) {
+	public Employee(int num,String name,Department department,int wage) {
 	
 	
 		this.num = num;
 		this.name = name;
-		
+		this.wage = wage;
 		this.department = department;
 
 	}
-	public Employee(int num,String name,int dNum,String dName) {
+	public Employee(int num,String name,int dNum,String dName,int wage) {
 //		this.num = num;
 //		this.name = name;
 //		this.dNum = dNum;
 //		this.department = new Department(dNum,dName);
-		this(num,name,new Department(dNum,dName));  //다른 생성자 호출해서 활용 
+		this(num,name,new Department(dNum,dName),wage);  //다른 생성자 호출해서 활용 
 
 	}
 	
 	public Employee(int num, String name) {
-		this(num,name,new Department());
+		this(num,name,new Department(),0);
 	}
 	
 	public String info() {
-		return String.format("사번 : %d, 이름 : %s, 부서 :%s", num,name,department.getdName());
-	}
-	public int getPay() {
-		return 0;
+		
+		return String.format("사번 : %d, 이름 : %s, 부서 :%s, 급여: %d", num,name,department.getdName(),wage);
 	}
 
 }
