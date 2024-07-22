@@ -13,14 +13,15 @@ public class Exam8_8 {
 
 		
 		do {
-			count++;
+			
 			System.out.print("1과 100사이의 값을 입력하세요 :");
 			try {
 				input = new Scanner(System.in).nextInt();		
 			} catch (InputMismatchException e) {
 				System.out.println("유효하지 않은 값입니다. 다시 값을 입력하세요");
-				continue;
+				continue;  // do로 다시 올라감
 			}
+			count++;  // 오류는 카운팅 되지 않음 
 			
 			if (answer > input) {
 				System.out.println("더 큰 수를 입력하세요.");
@@ -32,7 +33,6 @@ public class Exam8_8 {
 				break; // do-while문을 벗어난다
 			}
 		} while (true); // 무한반복문
-
 	
 	}
 
