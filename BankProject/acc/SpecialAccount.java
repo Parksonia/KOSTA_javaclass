@@ -1,8 +1,10 @@
 package acc;
 
+import exc.BankException;
+
 public class SpecialAccount extends Account {
 
-	Account account;
+	//Account account;
 	String grade;
 	
 	public SpecialAccount() {
@@ -13,18 +15,12 @@ public class SpecialAccount extends Account {
 		setGrade(grade);
 		//this.grade = grade;	
 	}
-		
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-	
+
 	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(String grade) {
+	public void setGrade(String grade) { // 값을 저장 할 때 셋팅된 값으로 저장 할 수 있도록 함
+		
 		//this.grade = grade;
 		switch(grade.charAt(0)) {
 		case 'V' :
@@ -40,7 +36,7 @@ public class SpecialAccount extends Account {
 
 	
 @Override
-public void deposit(int money) {
+public void deposit(int money) throws BankException {
 //	if(getGrade().equals("VIP")) {
 //		
 //	}
@@ -54,7 +50,7 @@ public void deposit(int money) {
 }
 
 @Override
-public String info() {
+public String toString() {
 	
 	return  String.format("계좌번호 :%s ,이름 : %s , 잔액 : %d, 등급 : %s", num, name, balance,grade);
 }
