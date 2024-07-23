@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import acc.Account;
@@ -13,8 +15,7 @@ public class Bank {
 
 	Scanner scanner = new Scanner(System.in);
 	// 여러개의 계좌를 저장하기 위해 Account클래스의 배열객체를 만듦
-	Account[] accs = new Account[100];
-	int cnt;
+	ArrayList<Account> accs = new ArrayList<>();
 
 	int selectMenu() throws BankException {
 		System.out.println("[코스타 은행]");
@@ -67,7 +68,7 @@ public class Bank {
 		System.out.println("입금액 :");
 		int money = Integer.parseInt(scanner.nextLine());
 		
-		accs[cnt++] = new Account(num, name, money); // cnt 0 으로 초기화 돼 있음, 먼저 0번 인덱스부터 넣고 ++ 됨
+		accs.add (new Account(num, name, money)); // cnt 0 으로 초기화 돼 있음, 먼저 0번 인덱스부터 넣고 ++ 됨
 
 	}
 
@@ -88,20 +89,27 @@ public class Bank {
 		System.out.print("등급(VIP-V, Gold-G, Silver-S, Normal-N) :");
 		String grade = scanner.nextLine();
 
-		accs[cnt++] = new SpecialAccount(num, name, money, grade); // cnt 0 으로 초기화 돼 있음, 먼저 0번 인덱스부터 넣고 ++ 됨
+		accs.add(new SpecialAccount(num, name, money, grade)); // cnt 0 으로 초기화 돼 있음, 먼저 0번 인덱스부터 넣고 ++ 됨
 
 	}
 
 	Account searchAccByNum(String num) { // 계좌 찾는 메서드를 만듦
-		Account acc = null;
-		for (int i = 0; i < cnt; i++) {
-			if (accs[i].getNum().equals(num)) {
-				acc = accs[i];
-				break;
+		for(Account acc: accs) {
+			if(acc.getNum().equals(num)) {
+				return acc;
 			}
 		}
-		return acc;
+		return  null;
 	}
+//		Account acc =null;	
+//		for (int i = 0; i < cnt; i++) {
+//			if (accs[i].getNum().equals(num)) {
+//				acc = accs[i];
+//				break;
+//			}
+//		}
+//		return acc;
+//	}
 
 	void deposit() throws BankException{ // 계좌번호와 입금할 돈을 입력 받기
 
@@ -159,11 +167,15 @@ public class Bank {
 		System.out.println(acc);
 	}
 
-	void allAccountInfo() {
+	void allAccountInfo() {		
 		System.out.println("[전체 계좌 조회]");
-		for (int i = 0; i < cnt; i++) { // 계좌가 null인 경우를 예방하기 위해 cnt를 활용함
-			System.out.println(accs[i]);
+		Iterator<Account> iterator = accs.iterator();
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
 		}
+//		for (int i = 0; i < cnt; i++) { // 계좌가 null인 경우를 예방하기 위해 cnt를 활용함
+//			System.out.println(accs[i]);
+//		}
 	}
 
 	public static void main(String[] args) throws BankException{
