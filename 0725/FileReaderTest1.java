@@ -6,16 +6,16 @@ public class FileReaderTest1 {
 
 	public static void main(String[] args) {
 
-		FileReader fis = null;
+		FileReader fReader=null;
 		//FileInputStream fis = null;
 		try {
-			fis = new FileReader("news.txt");
+			fReader = new FileReader("news.txt");
 			//fis = new FileInputStream("news.txt");
 			
 			//출력하기
 			//FileInputStream 쓰면 1바이트만 가져오게 됨 따라서 출력이 제대로 안됨 따라서 Reader로 문자 단위로 해야함
 			int data;
-			while((data = fis.read())!=-1) {
+			while((data = fReader.read())!=-1) {
 				System.out.print((char)data); 
 			}
 			
@@ -23,7 +23,7 @@ public class FileReaderTest1 {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(fis!=null) fis.close();
+				if(fReader!=null) fReader.close();
 			} catch (IOException e2) {
 				e2.printStackTrace();
 			}
