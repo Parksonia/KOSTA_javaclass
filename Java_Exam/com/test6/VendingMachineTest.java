@@ -20,8 +20,13 @@ public class VendingMachineTest {
 //		-printMenu() 메서드는 메뉴를 출력하는 메서드이다.
 		VendingMachineBiz vmb = new VendingMachineBiz();
 		VendingMachineTest vmt = new VendingMachineTest();
-		//Drink drink;
+		
+		Drink[] drinkList = new Drink[3];// 단순한 음료 정qh 담기
+		drinkList[0] = new Coffee();
+		drinkList[1] = new Coke();
+		drinkList[2] = new Juice();
 		int sel;
+		 
 		
 		while(true) {
 			sel = printMenu();
@@ -30,10 +35,12 @@ public class VendingMachineTest {
 				break;
 			}
 			switch(sel) {
-			case 1: vmb.printCart(); break;// 전체 음료수 및 잔액보기
+			case 1: vmb.printDrinkList(drinkList); break;// 전체 음료수 및 잔액보기
 			case 2: vmb.cartDrink(new Juice()); break; //객체 생성시 상수값 super로 보냄
-			case 3: vmb.cartDrink(new Coffee()); break;
+			case 3: vmb.cartDrink(new Coffee()); break; //위에서 생성한 객체를 활용해도 됨... drinks 배열을 만듦
 			case 4: vmb.cartDrink(new Coke()); break;
+			case 5: vmb.printCart(); break; 
+			
 			}
 		}
 	}
