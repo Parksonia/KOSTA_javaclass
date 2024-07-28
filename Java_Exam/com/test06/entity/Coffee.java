@@ -10,6 +10,6 @@ public class Coffee extends Drink {
 	@Override
 	public String toString() {
 	
-		return super.toString();
+		return "커피";
 	}
 }
